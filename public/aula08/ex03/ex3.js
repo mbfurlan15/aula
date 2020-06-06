@@ -5,9 +5,9 @@ class Triangulo{
         this.l3=l3;
     }
 Confe(){
-    if(this.l1<=this.l2+this.l3 &&
-        this.l2<=this.l1+this.l3 &&
-        this.l1<=this.l2+this.l1){
+    if(this.l1>Math.abs(this.l2-this.l3) && this.l1<this.l2+this.l3 &&
+        this.l2>Math.abs(this.l1-this.l3) && this.l2<this.l1+this.l3 &&
+        this.l3>Math.abs(this.l2-this.l1) && this.l1<this.l2+this.l1){
             if (this.l1==this.l2 && this.l2==this.l3){
                 return "Triângulo Equilátero"
             }else{
