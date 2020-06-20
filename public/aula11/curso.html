@@ -5,21 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Cliente</title>
     <script>
-        //Domain
+//#1 Domain
 class Curso {
-    constructor(titulo,descricao,professor, cargaHoraria){
+    constructor(titulo,descricao,idProfessor, cargaHoraria){
         this.titulo = titulo;
         this.descricao = descricao;
-        this.professor = professor; //relacionamento com a class Professor
+        this.idProfessor = idProfessor; //relacionamento com a class Professor
         this.cargaHoraria = cargaHoraria
     }
 }
 class Professor {
-    constructor(nome){
+    constructor(nome, id){
+        this.id = id;
         this.nome=nome;
     }
 }
-// Logic - Regra de negócio
+//#2 Logic - Regra de negócio
 class GerenciadorCurso{
 constructor (){
     this.cursos = []
@@ -36,13 +37,34 @@ imprimirCursos(){
  }
 }
 
+//#2.2 Logic
+class GerenciadorProfessor{
+    constructor(){
+        this.professores=[]
+        this.adicionar(new Professor("Virmerson",10));
+        this.adicionar(new Professor("Alison", 101));
+        this.adicionar(new Professor("Vinicius", 23));
+        this.adicionar(new Professor("Matheus", 50));
+    }
+    adicionar(professor){
+        this.professores.push(professor)
+    }
+    imprimirProfessor(){
+    for (i=0;i<this.professores.length;i++){
+        console.log(this.professores[i]);
+    }
+    }
+
+}
 
 
-//Controller
+//#3 Controller
 class CursoController{
     //Instancia um gerenciador de curso 
     constructor(){
-        this.gerenciador= new GerenciadorCurso();
+        this.gerenciadorCurso= new GerenciadorCurso();
+        this.gerenciadorProfessor = new GerenciadorProfessor();
+        this.carregarProfessores()
 
     }
      aoClicarSalvar(){
@@ -50,34 +72,49 @@ class CursoController{
     let titulo = document.getElementById("titulo").value;
     let descricao = document.getElementById("descricao").value;
     let cargaHoraria = document.getElementById("cargaHoraria").value;
+    let idProfs = document.getElementById("lista-profs").value;
 
     //instancia os objetos
-    let curso = new Curso (titulo, descricao, null, cargaHoraria);
+    let curso = new Curso (titulo, descricao, idProfs, cargaHoraria);
     //invoca o método para adicionar
-    this.gerenciador.adicionar(curso)
+    this.gerenciadorCurso.adicionar(curso)
     }
     aoClicarNoListar(){
         
-       let arr = this.gerenciador.cursos;
-       let divLista = document.getElementById("lista");
+       let arr = this.gerenciadorCurso.cursos;
+       let divLista = document.getElementById("lista-cursos");
        divLista.innerHTML = ""
         for(let i =0; i<arr.length;i++){
-        divLista.innerHTML += arr[i].titulo + " | "
+        divLista.innerHTML += arr[i].titulo + " => " + arr[i].idProfessor+"<br>"
+        }
+    }
+    carregarProfessores(){
+        let arr = this.gerenciadorProfessor.professores;
+       let divLista = document.getElementById("lista-profs");
+       divLista.innerHTML = ""
+        for(let i =0; i<arr.length;i++){
+        divLista.innerHTML += `<option value="${arr[i].id}">  ${arr[i].nome} </option>`
         }
     }
 }
 
-const cursoController = new CursoController();
+//const cursoController = new CursoController();
 
 </script>
 </head>
 <body>
+    <select id="lista-profs"></select>
     <input type="text" placeholder="Título" id="titulo">
     <input type="text" placeholder="Descrição" id="descricao">
     <input type="number" placeholder="Carga Horária" id="cargaHoraria">
     <input type="button" value="Salvar" onclick="cursoController.aoClicarSalvar()">
-    <button onclick="cursoController.aoClicarNoListar()">Listar</button>
-    <div id="lista"></div>
+    <button onclick="cursoController.aoClicarNoListar()">Listar Cursos</button>
+    <!--   <button onclick="cursoController.aoClicarNoListarProfessores()">Listar Professores</button> -->
+    <div id="lista-cursos"></div>
+    <!--  <div id="lista-profs"></div>  -->
 
 </body>
+<script>
+    const cursoController = new CursoController();
+</script>
 </html>
