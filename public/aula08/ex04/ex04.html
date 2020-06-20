@@ -4,19 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            background-color:greenyellow;
+            color: red;
+        }
+        
+        div.container{
+            border-style: solid;
+            border-color: black;
+            border-width: 3px;
+        }
+        .container>div{
+            background-color: cornflowerblue;
+            border-style: solid;
+            border-color: blue;
+            border-width: 1px;
+            margin: 10px;
+        }
+    </style>
     <script src="ex4.js"></script>
 </head>
 <body>
+    <div class="container">
     <h1>Mercadinho do Furlan</h1>
     <input type="text" placeholder="Produto" id="prod">
     <input type="number" placeholder="Valor (R$)" id="custo">
     <input type="button" value="CADASTAR" onclick="clique()"><br>
-    <div id="quant">Produtos cadastrados</div>
-    <div id="tabela"></div>
-    <div id="med"></div>
+    <div  id="quant">Produtos cadastrados</div>
+    <div  id="tabela"></div>
+    <div  id="med"></div>
     <!--Desafio-->
     <div id="maior"></div>
-    <div id="menor"></div>
+    <div  id="menor"></div>
+</div>
 
 
 </body>

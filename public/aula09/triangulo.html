@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Triangulo</title>
+    <script>
+      function verificarTriangulo() {
+        //Leitura
+        let lado1 = parseFloat(document.getElementById("l1").value);
+        let lado2 = parseFloat(document.getElementById("l2").value);
+        let lado3 = parseFloat(document.getElementById("l3").value);
+        let resultado = document.getElementById("resultado");
+
+        //Condicoes Lógica do Triangulo
+        let triangulo =
+          lado1 + lado2 > lado3 &&
+          lado2 + lado3 > lado1 &&
+          lado1 + lado3 > lado2;
+
+        let escaleno = lado1 != lado2 && lado2 != lado3 && lado3 != lado1;
+
+        let equilatero = lado1 == lado2 && lado2 == lado3 && lado3 == lado1;
+
+        let isosceles = !escaleno && !equilatero;
+
+        console.log(
+          `Triangulo:${triangulo}  Escaleno:${escaleno} Equilatero:${equilatero} Isosceles:${isosceles}`
+        );
+
+        //Lógica da Saída
+        if (triangulo) {
+          if (escaleno) {
+            resultado.innerText = "Escaleno";
+          } else if (equilatero) {
+            resultado.innerText = "Equilatero";
+          } else {
+            resultado.innerText = "Isósceles";
+          }
+        } else {
+          resultado.innerText = "Não Forma Triangulo";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <input placeholder="lado1" id="l1" />
+    <input placeholder="lado2" id="l2" />
+    <input placeholder="lado3" id="l3" />
+    <div id="resultado"></div>
+    <button onclick="verificarTriangulo()">calcular</button>
+  </body>
+</html>
