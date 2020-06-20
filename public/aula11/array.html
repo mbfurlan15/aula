@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Cliente</title>
+    <script>
+for(let i =0; i<=10;i++){
+    console.log("oi"+i)
+}
+let arrFrutas=["banana","maçã","pera","melancia","melão"]
+for(let i =0; i<arrFrutas.length;i++){
+    console.log(arrFrutas[i]);}
+
+let arrCursos = [
+{ titulo: "Java", descricao: "Curso destinado a devs..." },
+{ titulo: "JavaScript", descricao: "Aprendar Fazer APP com JS" },
+{ titulo: "NodeJS", descricao: "Construção de APIS com JS" },
+]
+for(let i =0; i<arrCursos.length;i++){
+    console.log(arrCursos[i].titulo+arrCursos[i].descricao);}
+
+class Cursos {
+    constructor(titulo,descricao){
+        this.titulo = titulo;
+        this.descricao = descricao;
+    }}
+
+    let arrCursoss = [
+        new Cursos("Java", "Curso destinado a devs..."),
+        new Cursos("JS", "Aprendar Fazer APP com JS"),
+      ];
+      arrCursoss[2] = new Cursos("PWA", "Aprende Progressive Web App");
+      arrCursoss.push(new Cursos("NodeJS", "Construção de APIS com JS"));
+
+      let cursosX = new Cursos("Curso X", "Desc curso x");
+      arrCursoss.push(cursosX);
+
+      for (let i = 0; i < arrCursoss.length; i++) {
+        console.log(arrCursoss[i].titulo + "/" + arrCursoss[i].descricao);
+      }
+
+</script>
+</head>
+<body>
+    
+</body>
+</html>

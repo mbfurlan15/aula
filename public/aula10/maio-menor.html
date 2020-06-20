@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maior Menor</title>
+    <style>
+      .flex-container {
+        border-style: solid;
+        border-color: brown;
+        border-width: 1px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: DodgerBlue;
+      }
+      .flex-container > div {
+        background-color: #f1f1f1;
+        border-style: solid;
+        border-color: burlywood;
+        border-width: 1px;
+        margin: 10px;
+        width: 250px;
+      }
+    </style>
+    <script>
+      /**
+            a) Crianças/ Adolecentes(Menor de Idade <18)    10% 
+            b) Adultos (Maior de Idade >=18 )               20% 
+            c) Idosos  >=50                                 70%  
+
+            Quantidade,  media e porcentagem para todos
+        
+        **/
+      class GerenciadorClientes {
+        constructor() {
+          this.maiorIdade = 0;
+          this.menorIdade = 5000;
+          this.media = 0;
+          this.quantidade = 0;
+          this.somaIdades = 0;
+
+          this.mediaMenor18 = 0;
+          this.quantidadeMenor18 = 0;
+          this.somaMenor18 = 0;
+        }
+
+        cadastrar(nome, idade) {
+          this.nome = nome;
+          //Todos
+          this.quantidade = this.quantidade + 1; //acumulador de quantidade
+          this.somaIdades = this.somaIdades + idade; //acumulador de idade (soma de idade em idade)
+          this.media = this.somaIdades / this.quantidade;
+
+          //Menores de 18
+          if (idade < 18) {
+            this.quantidadeMenor18 += 1;
+            this.somaMenor18 += idade;
+            this.mediaMenor18 = this.somaMenor18 / this.quantidadeMenor18;
+          }
+
+          if (idade > this.maiorIdade) {
+            this.maiorIdade = idade;
+            this.nomeMaiorIdade = nome;
+          }
+
+          if (idade < this.menorIdade) {
+            this.menorIdade = idade;
+            this.nomeMenorIdade = nome;
+          }
+        }
+      }
+
+      var gc = new GerenciadorClientes();
+
+      //DOM
+      function adicionar() {
+        //1)Leitura dos campos
+        let nome = document.getElementById("nome").value;
+        let idade = parseInt(document.getElementById("idade").value);
+
+        //2) Lógica
+        gc.cadastrar(nome, idade);
+        //3) Saida
+
+        //Todos
+        document.getElementById("lbl-maior").innerText =
+          gc.nomeMaiorIdade + " " + gc.maiorIdade;
+
+        document.getElementById("lbl-menor").innerText =
+          gc.nomeMenorIdade + " " + gc.menorIdade;
+
+        document.getElementById("lbl-qtd").innerText = gc.quantidade;
+
+        document.getElementById("lbl-soma").innerText = gc.somaIdades;
+
+        document.getElementById("lbl-media").innerText = gc.media;
+
+        //Parte A
+
+        document.getElementById("lbl-qtd-menor18").innerText =
+          gc.quantidadeMenor18;
+
+        document.getElementById("lbl-soma-menor18").innerText = gc.somaMenor18;
+
+        document.getElementById("lbl-media-menor18").innerText =
+          gc.mediaMenor18;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div>
+        <input type="text" placeholder="Nome" id="nome" />
+        <input type="number" placeholder="Idade" id="idade" />
+
+        <button onclick="adicionar()">Adicionar</button>
+      </div>
+
+      <div>
+        <label> Maior: </label>
+        <label id="lbl-maior"></label>
+        <label> Menor: </label>
+        <label id="lbl-menor"></label>
+
+        <label> Quantidade: </label>
+        <label id="lbl-qtd"></label>
+
+        <label> Soma: </label>
+        <label id="lbl-soma"></label>
+
+        <label> Media: </label>
+        <label id="lbl-media"></label>
+      </div>
+
+      <div>
+        <label> Quantidade Menores 18: </label>
+        <label id="lbl-qtd-menor18"></label>
+
+        <label> Soma Menores 18: </label>
+        <label id="lbl-soma-menor18"></label>
+
+        <label> Media Menores 18: </label>
+        <label id="lbl-media-menor18"></label>
+      </div>
+    </div>
+  </body>
+</html>
