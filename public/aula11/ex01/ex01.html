@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garagem de Carros</title>
+    <script src="ex01.js"></script>
+</head>
+<body>
+    <h1>Garagem de Carros</h1>
+    <!--Cadastrar Cliente-->
+    <div>
+        <input type="text" placeholder="Nome do Cliente" id="nome">
+        <input type="button" value="Cadastrar" onclick="carroController.cliqueCadasCliente();carroController.carregarClientes()">
+    </div>
+    <br>
+    <!--Cadastrar Carros e listá-los-->
+    <div>
+        <input type="text" placeholder="Marca" id="marca">
+        <input type="text" placeholder="Modelo" id="modelo">
+        <input type="number" placeholder="Ano" id="ano">
+        <select name="" id="lista-clientes"></select>
+        <button onclick="carroController.cliqueCadasCarro()">Cadastrar</button>
+        <button onclick="carroController.listarCadasCarro()">Listar Cadastros</button>
+    </div>
+    <table width="467" border="1px" id="lista-carros"></table>
+    
+</body>
+<script>
+    const carroController = new CarroController();
+</script>
+</html>
