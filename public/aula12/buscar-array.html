@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca Linear</title>
+    <script>
+        let arrFrutas = [{id:10,nome:"Maçã"},{id:20,nome:"Pera"},{id:30,nome:"Melancia"},{id:40,nome:"Uva"}];
+
+        /*for (let i=0; i<arrFrutas.length; i++){
+            //usar o != para negar uma instância
+            if(arrFrutas[i]!="Maçã"){
+                console.log(arrFrutas[i]);
+            }
+            
+        }*/
+        function indiceFruta(fruta){
+        for (let i=0; i<arrFrutas.length; i++){
+            //imprimir o índice da fruta
+            if(arrFrutas[i].nome.toUpperCase()==fruta.toUpperCase()){
+                return i
+            }
+        } return -1
+    }
+
+
+    function objetoFruta(id){
+        for (let i=0; i<arrFrutas.length; i++){
+            //imprimir o objeto todo "Fruta"
+            if(arrFrutas[i].id==id){
+                return arrFrutas[i]
+            }
+        } return null;
+    }
+    function buscarPorNome(nome){
+    let indice = indiceFruta(nome);
+    if (indice != -1){
+    console.log("Encontrado na posição:" + indice)
+    }else console.log("Não encontrado!")}
+
+    function buscarPorId(id){
+    let objeto = objetoFruta(id);
+    if (objeto != null){
+    console.log("Fruta encontrada: " + objeto.id + " nome: " + objeto.nome);
+    }else console.log("Não encontrado!")}
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

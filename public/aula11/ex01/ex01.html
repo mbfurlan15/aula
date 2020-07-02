@@ -19,11 +19,24 @@
         <input type="text" placeholder="Marca" id="marca">
         <input type="text" placeholder="Modelo" id="modelo">
         <input type="number" placeholder="Ano" id="ano">
+       
         <select name="" id="lista-clientes"></select>
+
+        <input type="text" placeholder="Placa" id="placa">
+        <input type="text" placeholder="Chassi" id="chassi">
+
         <button onclick="carroController.cliqueCadasCarro()">Cadastrar</button>
         <button onclick="carroController.listarCadasCarro()">Listar Cadastros</button>
     </div>
+    <div><input type="text" placeholder="Buscar" id="buscador">
+        <select name="" id="filtro">
+        <option value="placa">Placa</option>
+        <option value="chassi">Chassi</option>
+    </select>
+<button onclick="carroController.filtrarCarro()">Filtrar</button></div>
+<div id="imprima"></div><br>
     <table width="467" border="1px" id="lista-carros"></table>
+    <tr><td align="center"></td></tr>
     
 </body>
 <script>
