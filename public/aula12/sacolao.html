@@ -78,7 +78,7 @@ adicionarFruta(fruta){
     window.alert (`A fruta: ${fruta.nome} foi cadastrada com sucesso!`)
     }
     clicarExcluirID(){
-        let excluir = parseInt(document.getElementById("excluirfruta").value)
+        let excluir = parseInt(document.getElementById("datalistfruta").value)
         let arr = this.sacolao.arrFrutas;
         for(let i =0; i<arr.length;i++){
         if (excluir== arr[i].id){
@@ -95,11 +95,11 @@ adicionarFruta(fruta){
             
         divLista.innerHTML +=`<tr><td height="40" align="center">${arr[i].id}</td><td align="center">${arr[i].nome}</td></tr>`}
 
-    /*let dataList=document.getElementById("l-frutas");
+    let dataList=document.getElementById("l-frutas");
     dataList.innerHTML = ""
     for(let i =0; i<arr.length;i++){
             
-        dataList.innerHTML +=`<option value="${arr[i].id}">	${arr[i].nome}</option>`}*/
+        dataList.innerHTML +=`<option value="${arr[i].id}">	${arr[i].nome}</option>`}
     }
 
 }
@@ -124,11 +124,12 @@ var controller = new Controller();
         <button onclick="controller.clicarCadastrar();controller.listarFrutas()">Cadastrar</button>
     </div><br>
     <div>
-        <!--<input list="l-frutas">
-        <datalist id="l-frutas">
-        </datalist>-->
         <h1>Excluir Fruta</h1>
-        <input type="number" id="excluirfruta" placeholder="ID">
+        <input list="l-frutas" id="datalistfruta">
+        <datalist id="l-frutas">
+        </datalist>
+        
+        <!--<input type="number" id="excluirfruta" placeholder="ID"> -->
         <button onclick="controller.clicarExcluirID();controller.listarFrutas()">Excluir</button>
     </div><br>
     <table width="467" border="1px" id="lista-frutas"></table>
