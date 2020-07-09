@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca Linear</title>
+    <script type="module">
+        import Controller from "./controller.js";
+     window.controller = new Controller();
+    </script>
+</head>
+<body>
+<h1>Sacolão</h1>
+<div><input type="text" id="buscador">
+<select name="" id="lista">
+    <option value="id">ID</option>
+    <option value="fruta">FRUTA</option>
+    </select>
+    <button onclick="controller.clicarBuscar()">Buscar</button>
+</div>
+    <div id="imprima"></div>
+    <h1>Cadastrar Frutas</h1>
+    <div>
+        <input type="text" id="fruta">
+        <button onclick="controller.clicarCadastrar();controller.listarFrutas()">Cadastrar</button>
+    </div><br>
+    <div>
+        <h1>Excluir Fruta</h1>
+        <input list="l-frutas" id="datalistfruta">
+        <datalist id="l-frutas">
+        </datalist>
+        
+        <!--<input type="number" id="excluirfruta" placeholder="ID"> -->
+        <button onclick="controller.clicarExcluirID();controller.listarFrutas()">Excluir</button>
+    </div><br>
+    <table width="467" border="1px" id="lista-frutas"></table>
+</body>
+<script type="module">
+    import Controller from "./controller.js";
+     window.controller.listarFrutas()
+</script>
+</html>
