@@ -70,7 +70,7 @@ clicarIconeID(idFruta){
 listarFrutas(){
 let arr = this.sacolao.arrFrutas;
 let divLista = document.getElementById("lista-frutas");
-divLista.innerHTML = `<tr><th>ID</th><th>Fruta</th></tr>`
+divLista.innerHTML = `<tr><th>ID</th><th>Fruta</th><th>Excluir</th><th>Editar</th></tr>`
 for(let i =0; i<arr.length;i++){
     
 divLista.innerHTML +=`<tr><td height="40" align="center">${arr[i].id}</td><td align="center">${arr[i].nome}</td>
